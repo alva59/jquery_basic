@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery_Basic</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   
+   <!--fade area start-->
+    <div class="fade_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="fade_effect" id="fade_effect">
+                       <button type="button" id="fade-style" class="btn btn-success custom">Get The Fade Effect</button>
+                        <p>jQuery, at its core, is a Document Object Model (DOM) manipulation library. The DOM is a tree-structure representation of all the elements of a Web page. jQuery simplifies the syntax for finding, selecting, and manipulating these DOM elements. For example, jQuery can be used for finding an element in the document with a certain property or making it respond to an event (e.g. a mouse click).jQuery also provides a paradigm for event handling that goes beyond basic DOM element selection and manipulation. jQuery also aims to incorporate other highly used JavaScript functionality (e.g. fade ins and fade outs when hiding elements, animations by manipulating CSS properties).</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="design_text" id="design_text">
+                        <ul id="design" class="list-unstyled">
+                            <li>The First One is Gray.</li>
+                            <li>This is a Gorgeus one.</li>
+                            <li>A fabulous pick.</li>
+                            <li>Emotion grows up.</li>
+                            <li>Lets Go for Coffee.</li>
+                            <li>I am not in a rush.</li>
+                            <li>Nostalgic highway.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--end of fade area-->
+    
+    <div class="image_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="list-inline">
+                        <li><button type="button" class="btn btn-success all">Showcase</button></li>
+                        <li><button type="button" class="btn btn-success bike">Bikerz</button></li>
+                        <li><button type="button" class="btn btn-success coffee">Coffee</button></li>
+                        <li><button type="button" class="btn btn-success girl">SHE</button></li>
+                    </ul>
+                    <div class="col-md-3 ImaGe" id="bike">
+                        <img src="images/pt1.png" alt="">
+                    </div>
+                    <div class="col-md-3 ImaGe" id="girl">
+                        <img src="images/pt2.png" alt="">
+                    </div>
+                    <div class="col-md-3 ImaGe" id="coffee">
+                        <img src="images/pt3.png" alt="">
+                    </div>
+                    <div class="col-md-3 ImaGe" id="coffee">
+                        <img src="images/pt4.png" alt="">
+                    </div>
+                    <div class="col-md-3 ImaGe" id="bike">
+                        <img src="images/pt1.png" alt="">
+                    </div>
+                    <div class="col-md-3 ImaGe" id="girl">
+                        <img src="images/pt2.png" alt="">
+                    </div>
+                    <div class="col-md-3 ImaGe" id="bike">
+                        <img src="images/pt5.png" alt="">
+                    </div>
+                    <div class="col-md-3 ImaGe" id="bike">
+                        <img src="images/pt6.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+       
+    <div class="Form_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <textarea name="" id="txt" cols="60" rows="10" class="form-control"></textarea>
+                    <span class="doc-area"></span>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+        </div>
+    </div>
+       
+    
+    
+    
+    <script src="js/jquery-3.2.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+    <script>
+        
+        //Fade Effect
+        $(document).ready(function(){
+            $("#fade-style.btn").click(function(){
+                $("p").fadeToggle(4000);
+                                })
+            $("#fade-style.btn").mouseenter(function(){
+                $("p").css("color", "#37A8F1");
+                                })
+            $("#fade-style.btn").mouseleave(function(){
+                $("p").css("color", "#BBBBBB");
+                                })
+        })
+        
+        
+        //Child Selection
+        
+        $(document).ready(function(){
+            $("#design_text ul li:first-child").addClass("first");
+            $("#design_text ul li:last-child").addClass("last");
+            $("#design_text ul li:even").addClass("even");
+            $("#design_text ul li:odd").addClass("odd");
+        })
+        
+        
+        
+        
+        
+        
+        
+        //Text Area
+        $(document).ready(function(){
+            
+            var i=10;
+            var str= " Characters Only";
+            var End= " Only 10 Characters Allowed"
+            
+            $("span").text(i+str);
+            $("textarea").keyup(function(){
+                var Txt=$("textarea").val().length;
+                
+                var CharaCters = i-Txt;
+                $("span").text(CharaCters + str);
+                
+                if(CharaCters <= 0){
+                    $("span").text(End);
+                    $("span").css("background", "#1979CA")
+                    $("textarea").attr("readonly", "true")
+                }
+            })
+                
+        })
+        
+        
+        
+        //Image Effect
+        
+        $(document).ready(function(){
+
+				$("ul li button.all").click(function(){
+					$("div#coffee img").fadeIn(1000);
+					$("div#bike img").fadeIn(1000);
+					$("div#girl img").fadeIn(1000);
+				});
+				$("ul li button.bike").click(function(){
+					$("div#bike img").fadeIn(1000);
+					$("div#coffee img").fadeOut(1000);
+					$("div#girl img").fadeOut(1000);
+
+				});
+				$("ul li button.girl").click(function(){
+					$("div#coffee img").fadeOut(1000);
+					$("div#bike img").fadeOut(1000);
+					$("div#girl img").fadeIn(1000);
+
+				});
+				$("ul li button.coffee").click(function(){
+					$("div#girl img").fadeOut(1000);
+					$("div#coffee img").fadeIn(1000);
+					$("div#bike img").fadeOut(1000);
+
+				});
+			});
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </script>
+</body>
+</html>
